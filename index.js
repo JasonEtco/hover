@@ -6,11 +6,13 @@ const app = express();
 
 const http = require('http').Server(app);
 const path = require('path');
+const compression = require('compression');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-
 const config = require('./webpack.config');
+
+app.use(compression());
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 4000 : process.env.PORT;
