@@ -11,16 +11,15 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const config = require('./webpack.config');
-const prodConfig = require('./webpack.production.config');
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const c = isDeveloping ? config : prodConfig;
 const port = isDeveloping ? 4000 : process.env.PORT;
 
 if (isDeveloping) {
-  const compiler = webpack(c);
+  console.log('Development mode!');
+  const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
-    publicPath: c.output.publicPath,
+    publicPath: config.output.publicPath,
     contentBase: 'public',
     stats: {
       colors: true,
