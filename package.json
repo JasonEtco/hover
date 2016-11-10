@@ -22,7 +22,8 @@
     "rules": {
       "color-named": "always-where-possible",
       "declaration-block-semicolon-newline-after": "always-multi-line",
-      "declaration-block-single-line-max-declarations": 3
+      "declaration-block-single-line-max-declarations": 3,
+      "no-descending-specificity": 0
     }
   },
   "author": "",

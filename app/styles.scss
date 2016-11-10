@@ -1,4 +1,6 @@
 @import 'styles/variables';
+@import 'styles/mixins';
+@import 'styles/normalize';
 
 html, body { height: 100%; padding: 0; margin: 0; }
 
@@ -6,6 +8,27 @@ body {
     background-color: $black;
     font-size: 1.2rem;
     font-family: Roboto, sans-serif;
+    transition: background-color 200ms $standard;
+
+    &.all-active {
+        background-color: $yellow;
+
+        .circle {
+            &--3 {
+                box-shadow: 0 0 0 0 $black inset;
+
+                &.hover { box-shadow: 0 0 0 8px $black inset; }
+            }
+
+            &--5 svg {
+                stroke: $black;
+            }
+
+            &--6::before, &--6::after {
+                background-color: $black;
+            }
+        }
+    }
 }
 
 .circles {
@@ -16,12 +39,83 @@ body {
 }
 
 .circle {
+    position: relative;
     width: 50px;
     height: 50px;
     border: 2px dotted white;
     border-radius: 50%;
+    transition: all 200ms $bounce;
 
-    &:hover, &.hover {
-        background-color: white;
+    &--3 { box-shadow: 0 0 0 0 $yellow inset; }
+
+    &--5 svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        stroke: $yellow;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 200ms $bounce;
     }
+
+    &--6 {
+        &::before, &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 50%;
+            background-color: $yellow;
+            transform: scaleY(0);
+            transition: transform 200ms $standard;
+        }
+
+        &::before {
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            transform-origin: top center;
+        }
+
+        &::after {
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            transform-origin: bottom center;
+        }
+    }
+
+    &.hover {
+        &:nth-of-type(1) {
+            transform: scale(2);
+        }
+
+        &:nth-of-type(2) {
+            transform: skew(-45deg);
+        }
+
+        &:nth-of-type(3) {
+            box-shadow: 0 0 0 8px $yellow inset;
+        }
+
+        &:nth-of-type(4) {
+            border-radius: 0;
+        }
+
+        &:nth-of-type(5) {
+            animation: rotate infinite 1000ms linear;
+
+            svg {
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+
+        &:nth-of-type(6) {
+            &::before { transform: scaleY(1); }
+
+            &::after { transform: scaleY(1); }
+        }
+    }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+
+    100% { transform: rotate(90deg); }
 }
