@@ -5,6 +5,7 @@
 html, body { height: 100%; padding: 0; margin: 0; }
 
 body {
+    overflow: hidden;
     background-color: $black;
     font-size: 1.2rem;
     font-family: Roboto, sans-serif;
@@ -36,6 +37,10 @@ body {
     height: 100%;
     align-items: center;
     justify-content: space-around;
+
+    @include media($on-mobile) {
+        flex-wrap: wrap;
+    }
 }
 
 .circle {
@@ -110,6 +115,23 @@ body {
             &::before { transform: scaleY(1); }
 
             &::after { transform: scaleY(1); }
+        }
+    }
+
+    @include media($on-mobile) {
+        width: 40vw;
+        height: 40vw;
+
+        &--6 {
+            &::before {
+                border-top-left-radius: 20vw;
+                border-top-right-radius: 20vw;
+            }
+
+            &::after {
+                border-bottom-left-radius: 20vw;
+                border-bottom-right-radius: 20vw;
+            }
         }
     }
 }
