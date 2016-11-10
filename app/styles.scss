@@ -1,0 +1,44 @@
+html, body { height: 100%; padding: 0; margin: 0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-family: Roboto, sans-serif;
+}
+
+.logos {
+    margin-bottom: 1em;
+
+    svg {
+        width: 80px;
+        height: 80px;
+
+        &.svg--express { width: 160px; }
+    }
+}
+
+
+h1 {
+    margin: 0;
+    font-size: 3em;
+}
+
+a {
+    padding: 1em 1.2em;
+    border-radius: 3px;
+    margin-top: 2em;
+    background-color: #2196f3;
+    color: white;
+    font-size: 0.8em;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(black, 0.1);
+    transition: box-shadow 150ms;
+
+    &:hover { box-shadow: 0 2px 5px rgba(black, 0.3); }
+}
+
+@import 'styles/partial';
