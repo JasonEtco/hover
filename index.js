@@ -6,11 +6,15 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config');
 
-const compiler = webpack(config);
+const config = require('./webpack.config');
+const prodConfig = require('./webpack.production.config');
+
+const c = process.env.NODE_ENV === 'production' ? prodConfig : config;
+
+const compiler = webpack(c);
 const middleware = webpackMiddleware(compiler, {
-  publicPath: config.output.publicPath,
+  publicPath: c.output.publicPath,
   contentBase: 'public',
   stats: {
     colors: true,
