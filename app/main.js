@@ -1,4 +1,7 @@
+import io from 'socket.io-client';
 import './styles.scss';
+
+const socket = io();
 
 const circles = document.querySelectorAll('.circle');
 

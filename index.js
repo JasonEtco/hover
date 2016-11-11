@@ -15,14 +15,10 @@ const io = require('socket.io')(http);
 
 app.use(compression());
 
-
 io.on('connection', (socket) => {
-  console.log('A user just connected!');
-
   socket.on('hoverOn', i => io.emit('hoverOn', i));
   socket.on('hoverOff', i => io.emit('hoverOff', i));
 });
-
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 4000 : process.env.PORT;

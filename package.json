@@ -23,7 +23,7 @@
       "color-named": "always-where-possible",
       "declaration-block-semicolon-newline-after": "always-multi-line",
       "declaration-block-single-line-max-declarations": 3,
-      "no-descending-specificity": 0
+      "no-descending-specificity": null
     }
   },
   "author": "",
@@ -51,6 +51,7 @@
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
     "socket.io": "^1.5.1",
+    "socket.io-client": "^1.5.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
